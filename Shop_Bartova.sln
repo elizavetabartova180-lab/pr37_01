@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Bartova", "Shop_Bartova.csproj", "{81BED08C-2D88-497E-82FC-006D80D0E903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81BED08C-2D88-497E-82FC-006D80D0E903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81BED08C-2D88-497E-82FC-006D80D0E903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81BED08C-2D88-497E-82FC-006D80D0E903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81BED08C-2D88-497E-82FC-006D80D0E903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8350A1D2-3DE9-44F3-BA40-C5B71B4CA63B}
+	EndGlobalSection
+EndGlobal
