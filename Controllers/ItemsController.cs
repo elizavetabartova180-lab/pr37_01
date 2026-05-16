@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop_Bartova.Data.Interfaces;
+using Shop_Bartova.Data.Models;
 using Shop_Bartova.Data.ViewModell;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Shop_Bartova.Controllers
 {
@@ -23,6 +26,12 @@ namespace Shop_Bartova.Controllers
             return View(VMItems);
             //var cars = IAllItems.AllItems;
             //return View(cars);
+        }
+        [HttpGet]
+        public ViewResult Add()
+        {
+            IEnumerable<Categorys> Categorys = IAllCategorys.AllCategorys;
+            return View(Categorys);
         }
     }
 }
