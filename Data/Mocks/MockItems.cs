@@ -63,5 +63,10 @@ namespace Shop_Bartova.Data.Mocks
                 };
             }
         }
+
+        public int Add(Items Item)
+        {
+            return 0;
+        }
     }
 }
