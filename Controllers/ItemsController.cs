@@ -7,6 +7,7 @@ using Shop_Bartova.Data.ViewModell;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Shop_Bartova.Controllers
 {
@@ -96,6 +97,14 @@ namespace Shop_Bartova.Controllers
         {
             IAllItems.Delete(id);
             return Redirect("/Items/List");
+        }
+        public ActionResult Basket(int idItem = -1)
+        {
+            if (idItem != -1)
+            {
+                Startup.BasketItem.Add(new ItemsBasket(1, IAllItems.AllItems.Where(x => x.Id == idItem).First()));
+            }
+            return Json(Startup.BasketItem);
         }
     }
 }
