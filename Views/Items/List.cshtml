@@ -36,6 +36,11 @@
                     <p>Цена: @item.Price.ToString("c")</p>
                     <p>Категория: @item.Category.Name</p>
                     <p>Описание: @item.Description</p>
+                    <a href="/Items/Edit?id=@item.Id">Изменить</a> |
+                    <form method="post" action="/Items/Delete" style="display:inline;" onsubmit="return confirm('Удалить @item.Name?');">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit">Удалить</button>
+                    </form>
                 </div>
             </div>
         }

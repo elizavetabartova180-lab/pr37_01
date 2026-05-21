@@ -41,11 +41,13 @@ namespace Shop_Bartova.Controllers
         [HttpPost]
         public RedirectResult Add(string name, string description, IFormFile files, float price, int idCategory)
         {
+
             if (files != null)
             {
                 var uploads = Path.Combine(hostingEnvironment.WebRootPath, "img");
                 var filePath = Path.Combine(uploads, files.FileName);
                 files.CopyTo(new FileStream(filePath, FileMode.Create));
+
             }
             Items newItems = new Items();
             newItems.Name = name;
@@ -53,10 +55,47 @@ namespace Shop_Bartova.Controllers
             newItems.Img = files.FileName;
             newItems.Price = Convert.ToInt32(price);
             newItems.Category = new Categorys() { Id = idCategory };
+
             int id = IAllItems.Add(newItems);
             return Redirect("/Items/Update?id=" + id);
-
         }
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            var Item = IAllItems.GetItem(id);
+            ViewBag.Categorys=IAllCategorys.AllCategorys;
+            return View(Item);
+        }
+        [HttpPost]
+        public RedirectResult Edit(int id, string name, string description, IFormFile files, float price, int idCategory)
+        {
+            Items oldItem = IAllItems.GetItem(id);
+            string img = oldItem != null ? oldItem.Img : "";
 
+            if (files != null && files.Length > 0)
+            {
+                var uploads = Path.Combine(hostingEnvironment.WebRootPath, "img");
+                var filePath = Path.Combine(uploads, files.FileName);
+                files.CopyTo(new FileStream(filePath, FileMode.Create));
+                img = files.FileName;
+            }
+
+            Items editItems = new Items();
+            editItems.Id = id;
+            editItems.Name = name;
+            editItems.Description = description;
+            editItems.Img = img;
+            editItems.Price = Convert.ToInt32(price);
+            editItems.Category = new Categorys() { Id = idCategory };
+
+            IAllItems.Update(editItems);
+            return Redirect("/Items/List");
+        }
+        [HttpPost]
+        public RedirectResult Delete(int id)
+        {
+            IAllItems.Delete(id);
+            return Redirect("/Items/List");
+        }
     }
 }

@@ -1,0 +1,50 @@
+﻿@using Shop_Bartova.Data.Models;
+@model Items
+@{
+    Layout = "_Layout";
+    var categories = ViewBag.Categorys as IEnumerable<Shop_Bartova.Data.Models.Categorys>;
+}
+<h2>Изменение предмета</h2>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div>
+        Наименование:
+        <br /><input name="name" value="@Model.Name" />
+    </div>
+    <div>
+        Описание:
+        <br /><input name="description" value="@Model.Description" />
+    </div>
+    <div>
+        Изображение:
+        <br /><img src="~/img/@Model.Img" style="max-width: 200px;" />
+        <br /><input name="files" type="file" />
+    </div>
+
+    <div>
+        Стоимость:
+        <br /><input name="price" value="@Model.Price" />
+    </div>
+    <div>
+        Категория:
+        <br /><select name="idCategory">
+            @if (categories != null)
+            {
+                foreach (var cat in categories)
+                {
+                    if (cat.Id == Model.Category.Id)
+                    {
+                        <option value="@cat.Id" selected="selected">@cat.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@cat.Id">@cat.Name</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+    <br />
+    <input type="submit" value="Сохранить изменения" />
+    <a href="/Items/List">Отмена</a>
+</form>
